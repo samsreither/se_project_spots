@@ -1,10 +1,6 @@
-.card {
-  max-width: 413px;
-}
-
 .card__image {
   height: 413px;
-  width: 413px;
+  width: 100%;
   object-fit: cover;
   display: block;
 }
@@ -15,6 +11,17 @@
   justify-content: space-between;
 }
 
+.card__title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow:hidden;
+  max-width: 390px;
+}
+
 .card__like-button {
   background-image: url(../images/like.svg);
   width: 23px;
@@ -22,4 +29,14 @@
   border: 2px;
   background-color: transparent;
   opacity: 40%;
+}
+
+@media screen and (max-width: 627px) {
+  .card__image {
+    grid-template-columns: repeat(auto-fit, 288px);
+  }
+
+  .card__title {
+    max-width: 258px;
+  }
 }
