@@ -57,6 +57,7 @@ Declaring it to the buttons here is all I could figure out. */
   height: 16px;
   border: none;
   background-color: #fcf5e5;
+  white-space: nowrap;
 }
 
 .profile__edit-btn-logo {
@@ -80,6 +81,7 @@ Declaring it to the buttons here is all I could figure out. */
   align-items: center;
   justify-content: center;
   color: #fcf5e5;
+  white-space: nowrap;
 }
 
 .profile__plus-image {
