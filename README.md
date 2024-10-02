@@ -16,4 +16,4 @@ Image sharing site with profile section at the top. There are buttons to edit pr
 
 This webpage is deployed to Github Pages
 
-- Deployment Link: 
+- [Deployment Link:](https://samsreither.github.io/se_project_spots/)
