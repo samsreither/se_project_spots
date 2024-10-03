@@ -1,7 +1,8 @@
 .cards {
-  padding-bottom: 40px;
+  padding-bottom: 22px;
   border-bottom: 1px solid #21212166;
   gap: 20px;
+  margin-top: 20px;
 }
 
 .cards__list {
@@ -22,7 +23,6 @@
 
 @media screen and (max-width: 627px) {
   .cards {
-    margin-bottom:auto;
     max-width: 288px;
   }
 
