@@ -8,11 +8,37 @@ const initialCards = [
 ]
 
 const profileEditButton = document.querySelector(".profile__edit-btn");
-const editProfileModal = document.querySelector("#edit-profile-modal");
-const editProfileCloseButton = editProfileModal.querySelector(".modal__close-button");
+const profileNameElement = document.querySelector(".profile__name");
+const profileDescriptionElement = document.querySelector(".profile__description");
 
+const editProfileModal = document.querySelector("#edit-profile-modal");
+const editFormElement = editProfileModal.querySelector(".modal__form");
+const editProfileCloseButton = editProfileModal.querySelector(".modal__close-button");
+const editModalNameInput = editProfileModal.querySelector("#profile-name-input");
+const editModalDescriptionInput = editProfileModal.querySelector("#profile-description-input");
+
+const cardTemplate = document.querySelector("#card-template");
+const cardsList = document.querySelector(".cards__list")
+
+function getCardElement(data) {
+  const cardElement = cardTemplate.content
+  .querySelector(".card")
+  .cloneNode(true);
+
+  const cardNameEl = cardElement.querySelector(".card__title");
+  const cardImageEl = cardElement.querySelector(".card__image");
+
+  cardNameEl.textContent = data.name;
+  cardImageEl.src = data.link;
+  cardImageEl.alt = data.name;
+
+  return cardElement;
+
+}
 
 function openModal() {
+  editModalNameInput.value = profileNameElement.textContent;
+  editModalDescriptionInput.value = profileDescriptionElement.textContent;
   editProfileModal.classList.add("modal_opened");
 }
 
@@ -20,6 +46,18 @@ function closeModal() {
   editProfileModal.classList.remove("modal_opened");
 }
 
-profileEditButton.addEventListener("click", openModal);
+function handleEditFormSubmit(evt) {
+  evt.preventDefault();
+  profileNameElement.textContent = editModalNameInput.value;
+  profileDescriptionElement.textContent = editModalDescriptionInput.value;
+  closeModal();
+}
 
+profileEditButton.addEventListener("click", openModal);
 editProfileCloseButton.addEventListener("click",closeModal);
+editFormElement.addEventListener("submit",handleEditFormSubmit);
+
+for (let i = 0; i < initialCards.length; i++) {
+  const cardElement = getCardElement(initialCards[i]);
+  cardsList.prepend(cardElement);
+}
