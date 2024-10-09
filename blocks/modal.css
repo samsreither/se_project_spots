@@ -153,6 +153,7 @@
 
   .modal__container {
     padding: 12px;
+    max-width: 100%;
   }
 
   .modal__title {
@@ -192,8 +193,8 @@
   }
 
   .modal__image {
+    max-width: 100%;
     width: 100%;
-    max-width: calc(100% -32px);
     object-fit: contain;
     margin: 0;
   }

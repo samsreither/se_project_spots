@@ -45,6 +45,7 @@ const editModalDescriptionInput = editProfileModal.querySelector(
   "#profile-description-input"
 );
 
+
 // Select the modal
 const previewModal = document.querySelector("#preview-modal");
 previewModal.style.visiblity = "hidden";
@@ -71,7 +72,6 @@ function openModal(modal) {
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  setTimeout(() => {}, 300);
 }
 
 function handleEditFormSubmit(evt) {
@@ -109,7 +109,7 @@ function getCardElement(data) {
   });
 
   cardDeleteButton.addEventListener("click", () => {
-    card.remove();
+    cardElement.remove();
   });
 
   cardImageEl.addEventListener("click", () => {
@@ -124,6 +124,7 @@ function getCardElement(data) {
 profileEditButton.addEventListener("click", () => {
   editModalNameInput.value = profileNameElement.textContent;
   editModalDescriptionInput.value = profileDescriptionElement.textContent;
+  editModalAlt.value = profileNameElement.textContent;
   openModal(editProfileModal);
 });
 
