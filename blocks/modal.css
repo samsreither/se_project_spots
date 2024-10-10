@@ -156,6 +156,10 @@
     max-width: 100%;
   }
 
+  .modal__content_type_preview {
+    max-width: fit-content;
+  }
+
   .modal__title {
     font-size: 32px;
     margin: 10px 0 34px;
