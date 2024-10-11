@@ -13,7 +13,7 @@
   padding: 0 16px;
   z-index: 1000;
   opacity: 0;
-  transition: visibility 0s linear .3s, opacity .3s ease;
+  transition: visibility linear .3s, opacity .3s linear;
 }
 
 .modal_opened {
