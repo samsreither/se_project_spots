@@ -35,6 +35,7 @@ const profileDescriptionElement = document.querySelector(
 // Form elements
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editFormElement = editProfileModal.querySelector(".modal__form");
+const cardSubmitButton = editProfileModal.querySelector(".modal__submit-button");
 const editProfileCloseButton = editProfileModal.querySelector(
   ".modal__close-button"
 );
@@ -87,6 +88,8 @@ function handleAddCardSubmit(evt) {
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
   evt.target.reset();
+
+  disableButton(cardSubmitButton);
   closeModal(addCardModal);
 }
 

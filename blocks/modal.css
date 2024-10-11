@@ -131,6 +131,10 @@
   cursor: pointer;
 }
 
+.modal__submit-button_disabled {
+  opacity: 50%;
+}
+
 .modal__input {
   padding: 16px 12px;
   font-weight: 500;
@@ -138,9 +142,22 @@
   border: 1px solid #212121;
 }
 
+.modal__input_type_error {
+  border: 1px solid rgba(255, 0, 0, .6);
+}
+
 .modal__input::placeholder {
   font-size: 20px;
   line-height: 1;
+  font-weight: 500;
+}
+
+.modal__error {
+  display: block;
+  color: #FF0000;
+  opacity: 70%;
+  font-size: 16px;
+  line-height: 17.6px;
   font-weight: 500;
 }
 
