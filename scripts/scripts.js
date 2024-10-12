@@ -48,7 +48,6 @@ const editModalDescriptionInput = editProfileModal.querySelector(
 
 // Select the modal
 const previewModal = document.querySelector("#preview-modal");
-previewModal.style.visibility = "hidden";
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 const previewModalCloseButton = previewModal.querySelector(
@@ -159,6 +158,7 @@ function getCardElement(data) {
 profileEditButton.addEventListener("click", () => {
   editModalNameInput.value = profileNameElement.textContent;
   editModalDescriptionInput.value = profileDescriptionElement.textContent;
+  resetValidation(editProfileModal,Array.from(editProfileModal.querySelectorAll(settings.inputSelector)), settings);
   openModal(editProfileModal);
 });
 
