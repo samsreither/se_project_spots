@@ -35,7 +35,6 @@ const profileDescriptionElement = document.querySelector(
 // Form elements
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editFormElement = editProfileModal.querySelector(".modal__form");
-const cardSubmitButton = editProfileModal.querySelector(".modal__submit-button");
 const editProfileCloseButton = editProfileModal.querySelector(
   ".modal__close-button"
 );
@@ -49,7 +48,7 @@ const editModalDescriptionInput = editProfileModal.querySelector(
 
 // Select the modal
 const previewModal = document.querySelector("#preview-modal");
-previewModal.style.visiblity = "hidden";
+previewModal.style.visibility = "hidden";
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 const previewModalCloseButton = previewModal.querySelector(
@@ -57,6 +56,7 @@ const previewModalCloseButton = previewModal.querySelector(
 );
 
 const addCardModal = document.querySelector("#add-card-modal");
+const cardSubmitButton = addCardModal.querySelector(".modal__submit-button");
 const addCardElement = addCardModal.querySelector(".modal__form");
 const addCardModalCloseButton = addCardModal.querySelector(
   ".modal__close-button"
@@ -67,13 +67,44 @@ const cardLinkInput = addCardModal.querySelector("#add-card-link-input");
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
+// function to handle closing the modal with escape key
+function handleEscapeKey(event) {
+  if (event.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
+}
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown",handleEscapeKey);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown",handleEscapeKey);
 }
+
+
+//add listeners for closing the modal on overlay click
+function addOverlayClickListener(modal) {
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeModal(modal);
+    }
+  });
+}
+
+// select all modals
+const modals = document.querySelectorAll(".modal");
+
+// add listener to each modal
+modals.forEach((modal) => {
+  addOverlayClickListener(modal);
+})
+
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
@@ -89,7 +120,7 @@ function handleAddCardSubmit(evt) {
   cardsList.prepend(cardElement);
   evt.target.reset();
 
-  disableButton(cardSubmitButton);
+  disableButton(cardSubmitButton, settings);
   closeModal(addCardModal);
 }
 
