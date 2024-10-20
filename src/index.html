@@ -6,19 +6,19 @@
     <meta name="author" content="Sam Reither" />
     <meta name="description" content="??" />
     <meta name="keywords" content="??" />
-    <link rel="stylesheet" href="pages/index.css" />
+    <link rel="stylesheet" href="./pages/index.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>Spots</title>
   </head>
   <body>
     <div class="page">
       <header class="header">
-        <img src=".//images/logo.svg" alt="Spot logo" class="header__logo" />
+        <img id="images-logo" alt="Spot logo" class="header__logo" />
       </header>
       <main class="content">
         <section class="profile page__section">
           <img
-            src=".//images/avatar.jpg"
+            id="profile-avatar"
             alt="Bessie Coleman"
             class="profile__avatar"
           />
@@ -27,7 +27,7 @@
             <p class="profile__description">Civil Aviator</p>
             <button type="button" class="profile__edit-btn">
               <img
-                src=".//images/pencil.svg"
+                id="profile-edit-pencil"
                 class="profile__edit-btn-logo"
                 alt="Pencil icon"
               />Edit Profile
@@ -36,7 +36,7 @@
           <button type="button" class="profile__add-btn">
             <img
               class="profile__plus-image"
-              src=".//images/plus.svg"
+              id="add-profile"
               alt="Plus icon"
             />
             <span class="profile__text">New post</span>
@@ -64,7 +64,7 @@
         <div class="modal__container">
           <button type="submit" class="modal__close-button">
             <img
-              src="./images/x-logo.svg"
+              id="close-modal"
               alt="x-logo"
               class="modal__close-button-logo"
             />
@@ -105,7 +105,7 @@
         <div class="modal__container">
           <button type="submit" class="modal__close-button">
             <img
-              src="./images/x-logo.svg"
+              id="close-add-modal-logo"
               alt="x-logo"
               class="modal__close-button-logo"
             />
@@ -151,7 +151,7 @@
           aria-label="Close Preview"
         >
           <img
-            src="./images/x-logo.svg"
+            id="preview-close-modal-logo"
             alt="x-logo"
             class="modal__close-button-logo"
           />
@@ -160,7 +160,6 @@
         <p class="modal__caption"></p>
       </div>
     </div>
-    <script defer src="./scripts/scripts.js"></script>
-    <script defer src="./scripts/validation.js"></script>
+    <script type="module" src="/index.js"></script>
   </body>
 </html>

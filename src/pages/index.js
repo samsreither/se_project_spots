@@ -1,3 +1,35 @@
+import "./index.css";
+import { enableValidation, settings, resetValidation } from "../scripts/validation.js";
+
+import logoSrc from "../images/logo.svg";
+import editProfileSrc from "../images/pencil.svg";
+import avatarSrc from "../images/avatar.jpg";
+import addProfileSrc from "../images/plus.svg";
+import closeModalSrc from "../images/x-logo.svg";
+import closeAddModalSrc from "../images/x-logo.svg";
+import closePreviewModalSrc from "../images/x-logo.svg";
+
+const logoImage = document.getElementById("images-logo");
+logoImage.src = logoSrc;
+
+const pencil = document.getElementById("profile-edit-pencil");
+pencil.src = editProfileSrc;
+
+const avatar = document.getElementById("profile-avatar");
+avatar.src = avatarSrc;
+
+const addProfile = document.getElementById("add-profile");
+addProfile.src = addProfileSrc;
+
+const closeModalImage = document.getElementById("close-modal");
+closeModalImage.src = closeModalSrc;
+
+const closeAddModal = document.getElementById("close-add-modal-logo");
+closeAddModal.src = closeAddModalSrc;
+
+const closePreviewModal = document.getElementById("preview-close-modal-logo");
+closePreviewModal.src = closePreviewModalSrc;
+
 const initialCards = [
   {
     name: "Val Thorens",
@@ -185,3 +217,5 @@ initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardsList.prepend(cardElement);
 });
+
+enableValidation(settings);
