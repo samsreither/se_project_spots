@@ -16,11 +16,20 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            id="profile-avatar"
-            alt="Bessie Coleman"
-            class="profile__avatar"
-          />
+          <div class="profile__avatar-container">
+            <button class="profile__avatar-btn">
+              <img
+                id="profile__pencil-icon"
+                alt="Profile Pencil Icon"
+                class="profile__avatar-pencil"
+            />
+            </button>
+            <img
+              id="profile-avatar"
+              alt="Bessie Coleman"
+              class="profile__avatar"
+            />
+          </div>
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
@@ -50,6 +59,7 @@
                 <div class="card__content">
                   <h2 class="card__title"></h2>
                   <button type="button" class="card__like-button"></button>
+                  <span class="card__like-count">0</span>
                 </div>
               </li>
             </template>
@@ -100,12 +110,13 @@
           </form>
         </div>
       </div>
+
       <div class="modal" id="add-card-modal">
         <div class="modal__container">
           <button type="submit" class="modal__close-button">
             <img
-              id="close-add-modal-logo"
-              alt="x-logo"
+              id="close-modal"
+              alt="Close modal"
               class="modal__close-button-logo"
             />
           </button>
@@ -157,6 +168,51 @@
         </button>
         <img class="modal__image" src="" alt="" />
         <p class="modal__caption"></p>
+      </div>
+    </div>
+
+    <div class="modal" id="avatar-modal">
+      <div class="modal__container">
+        <button type="button" class="modal__close-button" id="profile__avatar-btn">
+          <img
+            id="close-avatar-modal"
+            alt="x-logo"
+            class="modal__close-button-logo"
+          />
+        </button>
+        <h2 class="modal__title">Edit profile avatar</h2>
+        <form name="edit-profile" class="modal__form"  id="edit-avatar-form" novalidate>
+          <label for="profile-avatar-input" class="modal__label modal__label-profile">
+            Profile Picture
+            <input
+              id="profile-avatar-input"
+              class="modal__input"
+              name="avatar"
+              placeholder="Paste the link to an image"
+              required
+            />
+            <span id="profile-avatar-input-error" class="modal__error"></span>
+          </label>
+
+          <button type="submit" class="modal__submit-button">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" id="delete-modal">
+      <div class="modal__container modal__container-close">
+        <button type="button" class="modal__close-button" id="modal-close-btn">
+          <img
+            id="close-modal-delete-button"
+            alt="x-logo"
+            class="modal__close-button-white"
+          />
+        </button>
+        <h2 class="modal__title delete-confirmation-title">Are you sure you want to delete this image?</h2>
+        <form class="modal__form"  id="delete-form" novalidate>
+          <button type="submit" class="modal__submit-button modal__delete-btn">Delete</button>
+          <button type="button" class="modal__submit-button modal__submit-btn">Cancel</button>
+        </form>
       </div>
     </div>
   </body>
