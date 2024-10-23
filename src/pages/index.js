@@ -75,13 +75,15 @@ const logo = document.querySelector('.header__logo');
 logo.src = logoSrc;
 const plus = document.querySelector('.profile__plus-image');
 plus.src = plusSrc;
-// The modal close button always returns NULL and I can't figure out why
-// const whitex = document.querySelector('modal__close-button-white');
-// whitex.src = whiteXSrc;
 
-const closeButtons = document.querySelectorAll(".modal__close-button-logo");
+const closeModalX = document.querySelectorAll(".modal__close.modal__close-grey");
+closeModalX.forEach(button => {
+  button.src = grayXSrc;
+});
+
+const closeButtons = document.querySelectorAll(".modal__close.modal__close-white");
 closeButtons.forEach(button => {
-  button.src = grayXSrc; // Assign the image source
+  button.src = whitexSrc;
 });
 
 closeDeleteModalButton.addEventListener("click", () => {
@@ -111,8 +113,6 @@ const avatarLinkInput = avatarModal.querySelector("#profile-avatar-input");
 
 api.getAppInfo()
 .then(([cards, userInfo]) => {
-  console.log("Fetched cards:", cards);
-  console.log("Number of cards:", cards.length);
   cards.forEach((item) => {
     const cardElement = getCardElement(item);
     cardsList.prepend(cardElement);
@@ -122,6 +122,14 @@ api.getAppInfo()
   avatar.src = userInfo.avatar;
 })
 .catch(console.error);
+
+//function to open the preview modal
+function openPreviewModal(link, name) {
+  previewModalImageEl.src = link;
+  previewModalImageEl.alt = name;
+  previewModalCaptionEl.textContent = name;
+  openModal(previewModal);
+}
 
 // function to handle closing the modal with escape key
 function handleEscapeKey(event) {
@@ -221,21 +229,25 @@ function handleAddCardSubmit(evt) {
 
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
-  console.log("Submit button clicked");
-  console.log("Avatar input value:", avatarLinkInput.value);
+
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true);
 
   api.editAvatarInfo(avatarLinkInput.value)
     .then((data) => {
       console.log("Avatar updated successfully:", data);
 
       avatar.src = data.avatar;
-
+      disableButton(submitBtn, settings);
       closeModal(avatarModal);
 
       evt.target.reset();
     })
-    .catch(console.error);
-}
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(submitBtn, false);
+    });
+  }
 
 function getCardElement(data, userInfo) {
   const cardElement = cardTemplate.content
@@ -287,6 +299,10 @@ function getCardElement(data, userInfo) {
     selectedCardId = data._id;
     console.log(selectedCard);
     console.log(selectedCardId);
+  });
+
+  cardImageEl.addEventListener("click", () => {
+    openPreviewModal(data.link, data.name);
   });
 
   return cardElement;
